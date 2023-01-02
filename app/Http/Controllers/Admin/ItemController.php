@@ -20,7 +20,6 @@ class ItemController extends Controller
     {
         $product = $product->getAllProducts($request->all());
         $size = Size::join('product_sizes','sizes.size_id','=','product_sizes.size_id')->join('product_ecommerces','product_sizes.product_id','=','product_ecommerces.product_id')->whereIn('category_id',[$request['category']])->get();
-        // dd($size);
         return response()->json([
             'products'=>$product,
             'size'=>$size

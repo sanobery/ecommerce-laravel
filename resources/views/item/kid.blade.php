@@ -5,7 +5,7 @@
 @endsection
 
 @section('head-content')
-  <link href = "{{mix('css/carddisplay.css')}}">
+  <link rel="stylesheet" href="{{mix('css/carddisplay.css')}}">
 @endsection
 
 @section('body-content')

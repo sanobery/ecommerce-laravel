@@ -1,9 +1,7 @@
 @extends('layout')
 
 @section('title')
-
   login
-
 @endsection
 
 @section('head-content')
@@ -23,19 +21,36 @@
         <div class="col-lg-7 px-5">
           <h1 class="mt-2 fw-light">LOG-IN</h1>
           <h6 class="py-1">Sign into Your Account</h6>
-          <form action="/login.php" method="post" id="form">
+          <form action="user" method="post" id="form">
+            @csrf
             <div class="form-row">
               <div class="col-lg-7">
                 <input type="text" placeholder="email@xyz.com" class="form-control my-2 p-2 formelement"
-                  data-validate="required|emailCheck|min:10|max:40" name="email" id="email">
-                <span class="error text-danger" name="error" id="error-email"></span>
+                name="email" id="email" value={{old('email')??''}} >
+                  @if($errors->has('email'))
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->get('email') as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                    </ul> 
+                  </div>
+                @endif
               </div>
             </div>
             <div class="form-row">
               <div class="col-lg-7">
                 <input type="text" placeholder="********" class="form-control my-2 p-2 formelement"
-                  data-validate="required|passwordCheck|min:8|max:25" name="password" id="password">
-                <span class="error text-danger" name="error" id="error-password"></span>
+                name="password" id="password" value={{old('password')??''}} >
+                @if($errors->has('password'))
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->get('password') as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                  </ul> 
+                </div>
+              @endif
               </div>
             </div>
             <div class="form-row">
@@ -47,7 +62,7 @@
             <a href="#" class="px-2"><em>Forgot Password</a></em>
 
             <em class="px-2">Don't Have an Account?
-              <a href="/views/signup.html">&nbsp;Sign-Up</a>
+              <a href="{{route('signup')}}">&nbsp;Sign-Up</a>
             </em>
           </form>
         </div>
@@ -60,9 +75,5 @@
 
 
 @section('script')
-  <script src="/jquery/formvalidationquery.js"></script>
 @endsection
 
-@section('title')
-  arij
-@endsection

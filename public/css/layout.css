@@ -1,0 +1,118 @@
+.body{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.offer {
+  background-color: rgb(182, 23, 23);
+  color: white;
+  height: 30px;
+}
+  
+.itemofdropdown li a {
+  color: #000;
+}
+  
+.itemofdropdown a:hover {
+  background-color: rgb(165, 157, 157);
+}
+  
+.midsection a {
+  color: #fff;
+  background-color: rgb(62, 12, 109);
+}
+  
+.midsection .midsectionimg {
+  width:100px;
+  height:200px;
+}
+  
+.card-img-top{
+  width: 100%;
+  height: 300px;
+}
+  
+.foot {
+  background-color: rgb(56, 53, 53);
+  width: 100%;
+  text-align: center;
+}
+  
+#price {
+  font-size: 18px;
+}
+  
+.nav ul {
+  float: right;
+}
+  
+.nav a {
+  text-decoration: none;
+  color: rgb(165, 157, 157);
+}
+
+.font {
+  color:rgb(167, 157, 157);
+}
+
+#shopnow {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: rgb(221, 30, 30);
+  color: white;
+  font-size: 18px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+}
+  
+.nav i {
+  color: rgb(167, 157, 157);
+}
+  
+.foot1 {
+  list-style-type: none;
+  color:#fff;
+}
+  
+.itemofdropdown li {
+  list-style-type: none;
+}
+    
+@media only screen and (min-width: 280px) and (max-width: 500px) {
+
+  .midsectionimg {
+    width: 350px;
+    height: 300px;
+  }
+  
+  #shopnow {
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    transform: translate(-20%, -20%);
+    -ms-transform: translate(-20%, -20%);
+    background-color: rgb(221, 30, 30);
+    color: white;
+    font-size: 14px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+  }
+}
+  
+@media only screen and (min-width: 900px) and (max-width: 2000px) {
+
+  .midsectionimg {
+    width: 1300px;
+    height: 400px;
+  }
+}
+  

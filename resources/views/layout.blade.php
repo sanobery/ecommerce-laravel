@@ -12,7 +12,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{mix('css/app.css')}}">
+  <link rel="stylesheet" href="{{mix('css/layout.css')}}">
   @yield('head-content')
 
 </head>
@@ -64,13 +64,13 @@
         </ul>
         <div class="d-block me-auto mb-2 mb-lg-0 text-center">
           <button type="button" class="btn">
-            <a href="/view/logincustomer.php" class="font">
-              <i class="fa fa-user"></i>
+            <a href="{{route('login')}}" class="font">
+              <i class="fa fa-user"></i>{{Session::get('user')}}
             </a>
           </button>
         </div>
         <div class="d-block me-auto mb-2 mb-lg-0 text-center">
-          <a href="/view/cart.php" class="font">
+          <a href="{{route('register')}}" class="font">
             <i class="fa fa-shopping-cart"></i>
           </a>
           <span id="lblCartCount"></span>
@@ -89,9 +89,9 @@
 
   <!-- Footer of Page -->
   <footer class="mt-3 foot">
-    <div class="d-flex text-dark">
+    <div class="d-flex bg-dark">
       <div class="col-lg-6 mt-4">
-        <ul class="foot1">
+        <ul class="foot1 text-white">
           <li>HOME</li>
           <li>COLLECTIONS</li>
           <li>NEW FEATURES</li>
@@ -99,7 +99,7 @@
         </ul>
       </div>
       <div class="col-lg-6 mt-4">
-        <ul class="foot1">
+        <ul class="foot1 text-light">
           <li>
             <i class="fa fa-envelope ">&nbsp;&nbsp;</i>
             myshop@gmail.com

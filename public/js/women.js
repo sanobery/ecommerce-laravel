@@ -22,4 +22,11 @@ $(document).ready(function () {
     getProducts([2], sizeId, colorId);
   });
   getProducts([2]);
+
+  $('#loadItem').on('click', function () {
+    var loadItem = "";
+    loadItem += ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>  Loading...';
+    $('#loadItem').html(loadItem);
+  });
+
 });
