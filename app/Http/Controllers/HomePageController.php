@@ -35,9 +35,12 @@ class HomePageController extends Controller
 
   public function login(LogIn $request, UserRegister $user)
   {
-      //dd($request->input());
+    // dd($request->input('email'));
     $user = $user->checkUserDetail($request->all());
-    dd($user);
+    //dd($user[0]->first_name);
+    $request->session()->put('user',$user[0]->first_name);
+    return redirect('/women');
+    // dd($user);
       // $request->session()->put('first_name','san');
       // if($user==1) {
       //   return redirect('/login');
@@ -50,7 +53,8 @@ class HomePageController extends Controller
   public function registration(Registration $request, UserRegister $user)
   {
     $user = $user->saveUserDetail($request->all());
-    return redirect('/');
+    $request->session()->put('user',$request->input('first_name'));
+    return redirect('/women');
   }
 
   public function loginIndex()

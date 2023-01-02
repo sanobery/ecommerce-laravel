@@ -18,7 +18,7 @@ class EnsureLogIn
   {
     $path = $request->path();
     if(($path == "login" || $path == "signup")) {
-      return redirect('/');
+      return redirect('/women');
     }
     return $next($request);
   }

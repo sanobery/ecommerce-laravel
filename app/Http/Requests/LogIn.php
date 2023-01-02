@@ -12,30 +12,30 @@ class LogIn extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
-    }
+  public function authorize()
+  {
+    return true;
+  }
 
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
-    {
-        return [
-            'email'     => 'required|email',
-            'password'  => ['required',
-                            Password::min(8)->letters()->numbers()->mixedCase()->symbols()
-                            ],
-        ];
-    }
+  public function rules()
+  {
+    return [
+    'email'     => 'required|email',
+    'password'  => ['required',
+      Password::min(8)->letters()->numbers()->mixedCase()->symbols()
+      ],
+    ];
+  }
 
-    public function messages()
-    {
-        return[
-            'email.required'     => 'email is required',
-        ];  
-    }
+  public function messages()
+  {
+    return[
+      'email.required' => 'email is required',
+    ];  
+  }
 }

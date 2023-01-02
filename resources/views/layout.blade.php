@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
   <!-- Navbar of page -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
@@ -63,9 +62,17 @@
           </li>
         </ul>
         <div class="d-block me-auto mb-2 mb-lg-0 text-center">
+          @if(Session::get('user'))
           <button type="button" class="btn">
             <a href="{{route('login')}}" class="font">
-              <i class="fa fa-user"></i>{{Session::get('user')}}
+            {{Session::get('user')}}
+            </a>
+          </button>
+          @else
+          <button type="button" class="btn">
+            <a href="{{route('login')}}" class="font">
+              {{-- Log-in |{{Session::get('user')}} --}}
+              <i class="fa fa-user"></i>
             </a>
           </button>
         </div>
@@ -83,6 +90,7 @@
         </form>
       </div>
     </div>
+    @endif
   </nav>
 
   @yield('body-content')
