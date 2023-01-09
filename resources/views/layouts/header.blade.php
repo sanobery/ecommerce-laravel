@@ -12,15 +12,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{mix('css/app.css')}}">
+  <link rel="stylesheet" href="{{mix('css/layout.css')}}">
   @yield('head-content')
 
 </head>
 
 <body>
-
   <!-- Navbar of page -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
     <div class="container">
       <a class="navbar-brand d-flex justify-content-between align-items-center order-lg-0" href="#">
         <span class="text-uppercase ms-2">MyShop.com</span>
@@ -34,7 +33,7 @@
       <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
           <li class="nav-item px-2 py-2">
-            <a class="nav-link" aria-current="page" href="/index.html">Home</a>
+            <a class="nav-link" aria-current="page" href="{{route('homepage')}}">Home</a>
           </li>
           <li class="nav-item px-2 py-2">
             <a class="nav-link" aria-current="page" href="#">Collections</a>
@@ -63,14 +62,28 @@
           </li>
         </ul>
         <div class="d-block me-auto mb-2 mb-lg-0 text-center">
+          @if(Session::get('user'))
+            <div class="btn-group">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                {{Session::get('user.first_name')}}
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{route('user')}}">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Change Password</a></li>
+                <li><a class="dropdown-item" href="#">Orders</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{{route('logout')}}">log-out</a></li>
+              </ul>
+            </div>
+          @else
           <button type="button" class="btn">
-            <a href="/view/logincustomer.php" class="font">
+            <a href="{{route('login')}}" class="font">
               <i class="fa fa-user"></i>
             </a>
           </button>
         </div>
         <div class="d-block me-auto mb-2 mb-lg-0 text-center">
-          <a href="/view/cart.php" class="font">
+          <a href="{{route('homepage')}}" class="font">
             <i class="fa fa-shopping-cart"></i>
           </a>
           <span id="lblCartCount"></span>
@@ -82,46 +95,13 @@
           </button>
         </form>
       </div>
+      @endif
     </div>
   </nav>
 
   @yield('body-content')
 
-  <!-- Footer of Page -->
-  <footer class="mt-3 foot">
-    <div class="d-flex text-dark">
-      <div class="col-lg-6 mt-4">
-        <ul class="foot1">
-          <li>HOME</li>
-          <li>COLLECTIONS</li>
-          <li>NEW FEATURES</li>
-          <li>SPECIAL</li>
-        </ul>
-      </div>
-      <div class="col-lg-6 mt-4">
-        <ul class="foot1">
-          <li>
-            <i class="fa fa-envelope ">&nbsp;&nbsp;</i>
-            myshop@gmail.com
-          </li>
-          <li>
-            <i class="fa fa-instagram">&nbsp;&nbsp;</i>
-            myshop.insta
-          </li>
-          <li>
-            <i class="fa fa-twitter">&nbsp;&nbsp;</i>
-            myshop_tweet
-          </li>
-          <li>
-            <i class="fa fa-facebook">&nbsp;&nbsp;</i>
-            myshop.com
-          </li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-
-
+ 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
   crossorigin="anonymous"></script>

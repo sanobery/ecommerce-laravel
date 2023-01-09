@@ -1,10 +1,15 @@
 {
-    "/js/app.js": "/js/app.js?id=24561c1686fa56d1311bd5f406632d3c",
+    "/js/app.js": "/js/app.js?id=becfb2c2ec2ad3ad08e6a04e551e05ff",
+    "/css/app.css": "/css/app.css?id=b76d4f6ac593e32dff3733933a3b9004",
+    "/css/signup.css": "/css/signup.css?id=9d35db07c23a41ed0bfec0579cc968f5",
     "/css/login.css": "/css/login.css?id=66ee47c175b49a609bea27e33aaeb407",
-    "/css/carddisplay.css": "/css/carddisplay.css?id=516b7a62c17ca1efcb45716701515942",
-    "/css/app.css": "/css/app.css?id=a0bb0150d2a67ffa7d6719984a10da3b",
-    "/js/product.js": "/js/product.js?id=0495111e5176a04d4a957844c779060b",
-    "/js/women.js": "/js/women.js?id=8e1f104f5ebb4fa33fc8cbf75364ef84",
-    "/js/men.js": "/js/men.js?id=3bddfb1d3bb1612ec6d17f29a04cf9d6",
-    "/js/kid.js": "/js/kid.js?id=c98e5048e2f828ec727ad513ca7891fb"
+    "/css/carddisplay.css": "/css/carddisplay.css?id=588e91c19cf2ed0d620495f440dc9314",
+    "/css/layout.css": "/css/layout.css?id=a0bb0150d2a67ffa7d6719984a10da3b",
+    "/css/adminsidebar.css": "/css/adminsidebar.css?id=17f5134f1b5dadb33fdab9fc8b35df8c",
+    "/css/profile.css": "/css/profile.css?id=2a50c4d82fb4d99e976d1d6a8b672eb7",
+    "/js/product.js": "/js/product.js?id=a2082df802ff7e12eefd6b73f82aaa15",
+    "/js/women.js": "/js/women.js?id=0f21524799044accafcbd70fc5011832",
+    "/js/men.js": "/js/men.js?id=90ebbbc0b96434955b504edb0bdf1bfd",
+    "/js/kid.js": "/js/kid.js?id=3e84ea1bc8a17bd1cd4fa39ff5366c36",
+    "/js/list.js": "/js/list.js?id=d6d90351cc1c51f6ce8a6593cca4d4b1"
 }
