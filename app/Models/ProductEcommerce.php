@@ -26,4 +26,34 @@ class ProductEcommerce extends Model
     }
     return $product->get();
   }
+
+  public function getProduct()
+  {
+    $product = new ProductEcommerce();
+    $product = $product->all();
+    
+    return $product;
+  }
+
+  public function insertData($data)
+  {
+    // dd($data['productSrc'],$data['productName'],$data['productDesc'],$data['categoryId']);
+    $productecommerce = new ProductEcommerce;
+    $productecommerce->product_src = $data['productSrc'];
+    $productecommerce->product_name = $data['productName'];
+    $productecommerce->product_desc = $data['productDesc'];
+    $productecommerce->category_id = $data['categoryId'];
+    $productecommerce->created_at = date("Y-m-d H:i:s");
+    $productecommerce->updated_at = date("Y-m-d H:i:s");
+    $productecommerce->save();
+    if($productecommerce->save())
+      return "Success";
+    return false;
+    
+  }
+
+  public function deleteData($data)
+  {
+    
+  }
 }

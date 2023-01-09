@@ -19,4 +19,12 @@ class Size extends Model
     return $size;
   }
 
+  public function getCount()
+  {
+    $user = new Size;
+    $user = $user->count();
+    // dd($user);
+    return $user;
+  }
+
 }

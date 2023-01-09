@@ -8,7 +8,6 @@ function getProducts(categoryValue, sizeId = [], colorId = []) {
       color: colorId
     },
     success: function (response) {
-      console.log(response.size);
       var htmlelement = "";
       var arraycheck = [];
       for (var i = 0; i < response.products.length; i++) {

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.header')
 
 
 @section('title')
@@ -11,6 +11,7 @@
 
 @section('body-content')
   @include('item.product')
+  @include('layouts.footer')
 @endsection
 
 @section('script')

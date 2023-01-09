@@ -6,7 +6,6 @@ $(document).ready(function () {
     $('.flexCheck').each(function (index, element) {
       if ($(element).is(':checked')) {
         sizeId.push(parseInt($(this).attr("data-id")));
-        //console.log("click", $(element).val(), text);
       }
     });
     getProducts([2], sizeId, colorId);
@@ -16,7 +15,6 @@ $(document).ready(function () {
     $('.flexCheckColor').each(function (index, element) {
       if ($(element).is(':checked')) {
         colorId.push(parseInt($(this).attr("data-id")));
-        // console.log("click", $(element).val());
       }
     });
     getProducts([2], sizeId, colorId);

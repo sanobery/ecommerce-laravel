@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.header')
 
 @section('title')
   Sign-Up

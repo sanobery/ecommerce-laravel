@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.header')
 
 @section('title')
   women 
@@ -10,6 +10,7 @@
 
 @section('body-content')
   @include('item.product')
+  @include('layouts.footer')
 @endsection
 
 @section('script')

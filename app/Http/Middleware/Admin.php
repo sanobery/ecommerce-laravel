@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class EnsureLogIn
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,11 @@ class EnsureLogIn
      */
   public function handle(Request $request, Closure $next)
   {
-    $path = $request->path();
-    if(($path == "login" || $path == "signup")) {
-      return redirect('/women');
+
+    if($request->session()->has('admin')) {
+      return $next($request);
     }
-    return $next($request);
+
+    return redirect()->route('adminhomepage');
   }
 }

@@ -1,17 +1,17 @@
-@extends('layout')
+@extends('layouts.header')
 
 @section('title')
   login
 @endsection
 
 @section('head-content')
-
   <link rel="stylesheet" href="{{mix('css/login.css')}}">
-
 @endsection
 
 @section('body-content')
-
+@if(Session::has('message'))
+<p class="alert alert-info">{{ Session::get('message') }}</p>
+@endif
   <section class="form my-4 mx-5">
     <div class="container mt-5">
       <div class="row">
@@ -21,7 +21,10 @@
         <div class="col-lg-7 px-5">
           <h1 class="mt-2 fw-light">LOG-IN</h1>
           <h6 class="py-1">Sign into Your Account</h6>
-          <form action="user" method="post" id="form">
+          @if(Session::has('status'))
+            <p class="alert alert-info">{{ Session::get('status') }}</p>
+          @endif
+          <form action="login" method="post" id="form">
             @csrf
             <div class="form-row">
               <div class="col-lg-7">
@@ -40,7 +43,7 @@
             </div>
             <div class="form-row">
               <div class="col-lg-7">
-                <input type="text" placeholder="********" class="form-control my-2 p-2 formelement"
+                <input type="password" placeholder="********" class="form-control my-2 p-2 formelement"
                 name="password" id="password" value={{old('password')??''}} >
                 @if($errors->has('password'))
                 <div class="alert alert-danger">
@@ -69,10 +72,7 @@
       </div>
     </div>
   </section>
-
 @endsection
-
-
 
 @section('script')
 @endsection

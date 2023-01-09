@@ -17,9 +17,12 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/carddisplay.css', 'public/css')
     .postCss('resources/css/login.css', 'public/css')
     .postCss('resources/css/signup.css', 'public/css')
+    .postCss('resources/css/profile.css', 'public/css')
+    .postCss('resources/css/adminsidebar.css', 'public/css')
     .sourceMaps();
 
 mix.scripts(['resources/js/product.js'], 'public/js/product.js').version();
 mix.scripts(['resources/js/women.js'], 'public/js/women.js').version();
 mix.scripts(['resources/js/men.js'], 'public/js/men.js').version();
 mix.scripts(['resources/js/kid.js'], 'public/js/kid.js').version();
+mix.scripts(['resources/js/list.js'], 'public/js/list.js').version();

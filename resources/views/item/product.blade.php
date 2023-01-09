@@ -33,27 +33,6 @@
     <!-- Different items -->
     <div class="col-9 col-lg-10">
       <div id="div1" class="row">
-        {{-- @foreach ($products as $product)
-        <div class = "col-12 col-lg-3"> 
-          <div class = "card cardinline mb-2">
-            <img src = "assets/{{$product->product_src}}" class = "card-img-top img-responsive imgsize" alt = "..." >
-            <center>
-            <h5 class = "card-title">{{$product->product_name}}</h5>
-            <select class = "sizeselect">
-              <option>Size</option>
-              <option>S</option>
-              <option>M</option>
-              <option>L</option>
-              <option>XL</option>
-              <option>XXL</option>
-            </select>
-            <br>
-            <button class = "btn btn-sm btn-primary">Add To Cart</button>
-            </center>
-            <br>
-          </div> 
-        </div>
-      @endforeach --}}
       </div>
     </div>
   </div>

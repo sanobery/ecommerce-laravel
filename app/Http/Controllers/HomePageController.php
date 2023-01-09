@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Models\Size;
 use App\Models\Color;
 use App\Models\Product;
@@ -13,15 +14,17 @@ use App\Http\Requests\Registration;
 
 class HomePageController extends Controller
 {
-  public function item()
+  public function list(UserRegister $user)
   {
-    return view('register');
+    $user = $user->getData();
+    return view('admin.list',['users'=>$user]);
   }
 
   public function getItems(Request $request,ProductEcommerce $product, Size $size, Color $color)
   {
     $product = $product->getAllProducts($request->all());
     $size = Size::join('product_sizes','sizes.size_id','=','product_sizes.size_id')->join('product_ecommerces','product_sizes.product_id','=','product_ecommerces.product_id')->whereIn('category_id',[$request['category']])->get();
+
     return response()->json([
       'products'=>$product,
       'size'=>$size
@@ -35,36 +38,25 @@ class HomePageController extends Controller
 
   public function login(LogIn $request, UserRegister $user)
   {
-    // dd($request->input('email'));
     $user = $user->checkUserDetail($request->all());
-    //dd($user[0]->first_name);
-    $request->session()->put('user',$user[0]->first_name);
-    return redirect('/women');
-    // dd($user);
-      // $request->session()->put('first_name','san');
-      // if($user==1) {
-      //   return redirect('/login');
-      // }
-      // else {
-      //   return redirect('/user');
-      // }
+    if($user && $request->session()->put('user',$user[0])) {
+      return redirect('/');
+    }
+   
+    return redirect('/login');
   }
 
   public function registration(Registration $request, UserRegister $user)
   {
     $user = $user->saveUserDetail($request->all());
-    $request->session()->put('user',$request->input('first_name'));
-    return redirect('/women');
+    $request->session()->put('user',$user);
+
+    return redirect('/');
   }
 
   public function loginIndex()
   { 
-    $name = '<h1>abc</h1>';
-    $email = '<h2>sanober@gmail.com</h2>';
-    return view('user.login',[
-      'name1'=>$name,
-      'email'=>$email
-    ]);
+    return view('user.login');
   }
 
   public function signupIndex()
@@ -72,15 +64,11 @@ class HomePageController extends Controller
     return view('user.signup');
   }
 
-  public function register()
-  { 
-    return view('register');
-  }
-
   public function womenItem(Size $size, Color $color)
   { 
     $size = $size->getAllSize();
     $color = $color->getAllColor();
+
     return view('item.women')->with(['sizes'=>$size,'colors'=>$color]);
   }
 
@@ -88,6 +76,7 @@ class HomePageController extends Controller
   { 
     $size = $size->getAllSize();
     $color = $color->getAllColor();
+
     return view('item.men',['sizes'=>$size,'colors'=>$color]);
   }
 
@@ -95,6 +84,14 @@ class HomePageController extends Controller
   { 
     $size = $size->getAllSize();
     $color = $color->getAllColor();
+    
     return view('item.kid',['sizes'=>$size,'colors'=>$color]);
+  }
+
+  public function logOut()
+  {
+    Session::flush();
+
+    return redirect('/');
   }
 }
