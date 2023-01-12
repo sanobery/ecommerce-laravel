@@ -17,6 +17,7 @@ class HomePageController extends Controller
   public function list(UserRegister $user)
   {
     $user = $user->getData();
+
     return view('admin.list',['users'=>$user]);
   }
 
@@ -40,6 +41,7 @@ class HomePageController extends Controller
   {
     $user = $user->checkUserDetail($request->all());
     if($user && $request->session()->put('user',$user[0])) {
+      
       return redirect('/');
     }
    

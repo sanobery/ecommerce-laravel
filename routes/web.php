@@ -48,7 +48,7 @@ Route::group(['middleware'=>['adminLogin']],function (){
   Route::get('/dashboard','AdminController@dashboard')->name('admindashboard');
   Route::get('list', 'HomePageController@list')->name('list');
   Route::get('/productlist', 'AdminController@productList')->name('productlist');
-  Route::post('/productlist','AdminController@createProduct');
+  Route::post('/productlist','AdminController@createEditProduct');
   Route::post('/deleteitem','AdminController@deleteProduct');
 });
 Route::get('/adminlogout','AdminController@logOut')->name('adminlogout');
