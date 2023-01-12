@@ -34,7 +34,7 @@
                   <div class="alert alert-danger">
                     <ul>
                       @foreach ($errors->get('email') as $error)
-                          <li>{{ $error }}</li>
+                        <li>{{ $error }}</li>
                       @endforeach
                     </ul> 
                   </div>

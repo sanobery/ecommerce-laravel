@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductEcommerce extends Model
 {
   use HasFactory;
+
+  protected $primaryKey = 'product_id';
 
   public function getAllProducts($data)
   { 
@@ -35,25 +38,42 @@ class ProductEcommerce extends Model
     return $product;
   }
 
-  public function insertData($data)
+  public function insertUpdateData($request)
   {
-    // dd($data['productSrc'],$data['productName'],$data['productDesc'],$data['categoryId']);
+    // dd($request->all());
     $productecommerce = new ProductEcommerce;
-    $productecommerce->product_src = $data['productSrc'];
+    $data = $request->all();
+    if($data['productId']) {
+      $productecommerce = $productecommerce->where('product_id',$data['productId'])->first();
+    } 
+
+    if($request->hasFile('productSrc')) {
+      $file = $request->file('productSrc');
+      $fileName = sha1(time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
+      Storage::put('public/Uploads/'.$fileName,file_get_contents($file->getRealPath()));
+      $productecommerce->product_src = $fileName;
+    }
+   
+    // $request->file('productSrc')->storeAs('public/Uploads',$fileName);
     $productecommerce->product_name = $data['productName'];
     $productecommerce->product_desc = $data['productDesc'];
     $productecommerce->category_id = $data['categoryId'];
-    $productecommerce->created_at = date("Y-m-d H:i:s");
-    $productecommerce->updated_at = date("Y-m-d H:i:s");
-    $productecommerce->save();
-    if($productecommerce->save())
-      return "Success";
+
+    
+    if($productecommerce->save()) {
+      return true;
+    }
+
     return false;
     
   }
 
   public function deleteData($data)
   {
-    
+    // dd($data['product_id']);
+    $productecommerce = new ProductEcommerce;
+    $productecommerce = $productecommerce->where('product_id',$data['product_id'])->delete();
+    // dd($productecommerce->toSql());
+    return true;
   }
 }

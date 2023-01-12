@@ -10,6 +10,7 @@ use App\Http\Requests\LogIn;
 use App\Models\UserRegister;
 use Illuminate\Http\Request;
 use App\Models\ProductEcommerce;
+use App\Http\Requests\ProductList;
 
 class AdminController extends Controller
 {
@@ -22,8 +23,10 @@ class AdminController extends Controller
   {
     $admin = $admin->checkAdminDetail($request->all());
     if($admin && $request->session()->put('admin',$admin[0])){
+
       return redirect('/dashboard');
     }
+
     return redirect('/adminlogin');
   }
 
@@ -50,6 +53,7 @@ class AdminController extends Controller
   public function productList(ProductEcommerce $product)
   {
     $product = $product->getProduct();
+
     return view('admin.productlist',[
       'products' => $product,
     ]);
@@ -60,17 +64,19 @@ class AdminController extends Controller
     return $id;
   }
 
-  public function createProduct(Request $request,ProductEcommerce $product)
+  public function createEditProduct(ProductList $request,ProductEcommerce $product)
   {
-    $product->insertData($request->all());
+    // dd($request->all());
+    $product->insertUpdateData($request);
+   
     return response()->json(['message'=>"Success"]);
   }
 
   public function deleteProduct(Request $request,ProductEcommerce $product)
   {
-    // dd($request);
+    // dd($request->all());
     $product->deleteData($request->all());
-    return $id;
+    return response()->json(['message'=>"Success"]);
   }
 
 
