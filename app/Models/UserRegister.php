@@ -27,6 +27,7 @@ class UserRegister extends Model
   {
     $user = new UserRegister;
     $user = $user->where('email',$data['email'])->get();
+
     if(!empty($user[0]) && Hash::check($data['password'],$user[0]->password)) {
       return $user;
     }
@@ -44,23 +45,21 @@ class UserRegister extends Model
   
   public function updateData($data)
   {
-    // dd($data);
     $user = new UserRegister;
     $user = $user->where('user_id',$data['userId'])->update([ 
         "first_name" => $data['firstName'],
         "last_name" => $data['lastName'],
         "email" => $data['email'],
     ]);
-    // $user->save();
+
     return $user;
-    // dd($user);
   }
 
   public function getCount()
   {
     $user = new UserRegister;
     $user = $user->count();
-    // dd($user);
+
     return $user;
   }
   

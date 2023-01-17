@@ -32,10 +32,11 @@ Route::group(['middleware'=>['authenticatedUser']],function (){
     Route::get('userdetails','HomePageController@userProfile')->name('user');
     Route::get('updatedetail','CustomerController@updateData')->name('updatedetail');
     Route::post('updatedetail','CustomerController@updateUserInfo');
+    // Route::get('/proceedToBuy','ItemController@buyNow')->name('buynow');
   });
 });
 
-Route::resource('customer','DashboardController');
+Route::resource('productdetail','ProductController');
 Route::get('/logout','HomePageController@logOut')->name('logout');
 
 // admin login route with middleware
@@ -53,9 +54,14 @@ Route::group(['middleware'=>['adminLogin']],function (){
 });
 Route::get('/adminlogout','AdminController@logOut')->name('adminlogout');
 
-
+Route::get('/shop','HomePageController@shop')->name('shoppage');
 Route::get('/register','HomePageController@register')->name('register');
 Route::get('/men','HomePageController@menItem')->name('men');
 Route::get('/kid','HomePageController@kidItem')->name('kid');
 Route::get('/women','HomePageController@womenItem')->name('lady');
 Route::post('/get_products','HomePageController@getItems');
+Route::get('/cart','ItemController@cartItem')->name('cart');
+Route::post('/get_prices','HomePageController@getPrices');
+Route::get('/proceedToBuy','ItemController@buyNow')->name('buynow');
+
+

@@ -1,0 +1,107 @@
+.bg-lightblue {
+  background-color: rgb(210, 210, 228);
+}
+
+#div1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#lblCartCount {
+  font-size: 0.8rem;
+  background: rgb(223, 162, 162);
+  color: rgb(175, 23, 23);
+  border-radius: 50%;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -2px;
+  margin-top: -5px;
+}
+
+.foot ul li {
+  list-style-type: none;
+}
+
+.font {
+  color: rgb(167, 157, 157);
+}
+
+.foot {
+  top: 95%;
+  background-color: rgb(56, 53, 53);
+  text-align: center;
+}
+
+#offcanvasExampleLabel {
+  color: rgb(175, 23, 23);
+}
+
+.table tr,
+.table tr td {
+  vertical-align: middle;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button-container .form-control {
+  display: inline-block;
+  max-width: 80px;
+  text-align: center;
+  margin: 0px 5px;
+}
+
+#mytable .form-control {
+  display: inline-block;
+  width: auto;
+}
+
+.delete {
+  color: #fff;
+}
+
+.img-prod {
+  width: 50px;
+  height: 50px;
+}
+
+.img-prod img {
+  width: 100%;
+  height: 100%;
+}
+
+.price {
+  background-color: white;
+  color: rgb(167, 157, 157);
+  border-radius: 30px;
+  border: 1px solid rgb(167, 157, 157);
+  width: 50px;
+  height: auto;
+}
+
+.offcanvas {
+  --bs-offcanvas-width: 500px;
+}
+
+.offcanvas .btn i {
+  color: #fff;
+}
+
+.size {
+  margin-top: 14px;
+  width: 50px;
+  height: 36px;
+  background-color: rgb(206, 194, 194);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+}
+
+.display {
+  display: flex;
+  align-items: center;
+}
+

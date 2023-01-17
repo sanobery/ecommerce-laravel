@@ -92,7 +92,7 @@
               <td>{{$product['product_id']}}</td>
               <td>
                 {{-- <img src="assets/{{$product['product_src']}}" class="img img-thumbnail"> --}}
-                <img src="{{asset('products/'.$product['product_src'])}}" class="img img-thumbnail">
+                <img src="{{asset('/storage/Uploads/'.$product['product_src'])}}" class="img img-thumbnail">
 
               </td>
               <td>{{$product['product_name']}}</td>

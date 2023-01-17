@@ -14,6 +14,7 @@ class Admin extends Model
   {
     $user = new Admin;
     $user = $user->where('email',$data['email'])->where('password',$data['password'])->get();
+    
     if(!empty($user[0])) {
       return $user;
     }

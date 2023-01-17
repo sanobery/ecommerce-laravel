@@ -17,7 +17,7 @@ class CustomerController extends Controller
   public function updateUserInfo(Request $request,UserRegister $user)
   {
     $user = $user->updateData($request->all());
-    // dd($user);
+
     if($user) {
       Session::flush();
       Session::flash('message', 'User Information Updated! Please Login Again.'); 

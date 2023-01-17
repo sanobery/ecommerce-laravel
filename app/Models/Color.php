@@ -18,7 +18,7 @@ class Color extends Model
   {
     $user = new Color;
     $user = $user->count();
-    // dd($user);
+
     return $user;
   }
 }

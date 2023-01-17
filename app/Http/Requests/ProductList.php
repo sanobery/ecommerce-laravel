@@ -11,6 +11,7 @@ class ProductList extends FormRequest
      *
      * @return bool
      */
+    
   public function authorize()
   {
       return true;
@@ -31,6 +32,5 @@ class ProductList extends FormRequest
     ];
   }
   
-
 }
 

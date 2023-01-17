@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Models\Size;
 use App\Models\Color;
+use App\Models\Price;
 use App\Models\Product;
 use App\Http\Requests\LogIn;
 use App\Models\UserRegister;
@@ -14,6 +15,14 @@ use App\Http\Requests\Registration;
 
 class HomePageController extends Controller
 {
+  public function shop(Size $size, Color $color)
+  {
+    $size = $size->getAllSize();
+    $color = $color->getAllColor();
+
+    return view('item.shop')->with(['sizes'=>$size,'colors'=>$color]);
+  }
+
   public function list(UserRegister $user)
   {
     $user = $user->getData();
@@ -21,7 +30,16 @@ class HomePageController extends Controller
     return view('admin.list',['users'=>$user]);
   }
 
-  public function getItems(Request $request,ProductEcommerce $product, Size $size, Color $color)
+  public function getPrices(Request $request,Price $price,Size $size)
+  {
+    $price = $price->getPrice($request->all());
+
+    return response()->json([
+      'price'=>$price,
+    ]);
+  }
+
+  public function getItems(Request $request,ProductEcommerce $product, Size $size, Color $color, Price $prices)
   {
     $product = $product->getAllProducts($request->all());
     $size = Size::join('product_sizes','sizes.size_id','=','product_sizes.size_id')->join('product_ecommerces','product_sizes.product_id','=','product_ecommerces.product_id')->whereIn('category_id',[$request['category']])->get();
@@ -97,3 +115,5 @@ class HomePageController extends Controller
     return redirect('/');
   }
 }
+
+// SELECT * FROM prices join sizes on prices.size_id = sizes.size_id where prices.product_id = 2 and sizes.size_option = 'L';
