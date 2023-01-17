@@ -5,13 +5,13 @@
 @endsection
 
 @section('head-content')
-  <link rel="stylesheet" href="{{mix('css/login.css')}}">
+  {{-- <link rel="stylesheet" href="{{mix('css/login.css')}}"> --}}
 @endsection
 
 @section('body-content')
-@if(Session::has('message'))
-<p class="alert alert-info">{{ Session::get('message') }}</p>
-@endif
+  @if(Session::has('message'))
+  <p class="alert alert-info">{{ Session::get('message') }}</p>
+  @endif
   <section class="form my-4 mx-5">
     <div class="container mt-5">
       <div class="row">

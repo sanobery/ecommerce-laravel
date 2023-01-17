@@ -11,11 +11,13 @@ class Size extends Model
 
   public function getAllSize(){
     $size = Size::all();
+
     return $size;
   }
 
   public function getFilterSize($size){
     $size = Size::where('size_option',$size)->get('size_id');
+
     return $size;
   }
 
@@ -23,7 +25,7 @@ class Size extends Model
   {
     $user = new Size;
     $user = $user->count();
-    // dd($user);
+
     return $user;
   }
 

@@ -40,8 +40,8 @@ class ProductEcommerce extends Model
 
   public function insertUpdateData($request)
   {
-    // dd($request->all());
     $productecommerce = new ProductEcommerce;
+    dd($request->all());
     $data = $request->all();
     if($data['productId']) {
       $productecommerce = $productecommerce->where('product_id',$data['productId'])->first();
@@ -53,13 +53,11 @@ class ProductEcommerce extends Model
       Storage::put('public/Uploads/'.$fileName,file_get_contents($file->getRealPath()));
       $productecommerce->product_src = $fileName;
     }
-   
-    // $request->file('productSrc')->storeAs('public/Uploads',$fileName);
+
     $productecommerce->product_name = $data['productName'];
     $productecommerce->product_desc = $data['productDesc'];
     $productecommerce->category_id = $data['categoryId'];
 
-    
     if($productecommerce->save()) {
       return true;
     }
@@ -70,10 +68,9 @@ class ProductEcommerce extends Model
 
   public function deleteData($data)
   {
-    // dd($data['product_id']);
     $productecommerce = new ProductEcommerce;
     $productecommerce = $productecommerce->where('product_id',$data['product_id'])->delete();
-    // dd($productecommerce->toSql());
+
     return true;
   }
 }

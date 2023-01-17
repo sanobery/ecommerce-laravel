@@ -5,7 +5,7 @@
 @endsection
 
 @section('head-content')
-  <link rel="stylesheet" href="{{mix('css/signup.css')}}">
+  {{-- <link rel="stylesheet" href="{{mix('css/signup.css')}}"> --}}
 @endsection
 
 @section('body-content')

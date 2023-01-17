@@ -29,7 +29,7 @@
     background-color: pink;
   }
   
-  /* #lblCartCount {
+  #lblCartCount {
     font-size: 0.8rem;
     background: rgb(223, 162, 162);
     color: rgb(175, 23, 23);
@@ -38,7 +38,7 @@
     vertical-align: top;
     margin-left: -2px;
     margin-top: -5px;
-  } */
+  }
   
   #offcanvasExampleLabel {
     color: rgb(175, 23, 23);

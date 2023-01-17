@@ -1,111 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-<!-- Head Tag with different Link tag -->
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta charset="utf-8">
+    <title>MyShop - Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="MyShop " name="keywords">
+    <meta content="MyShop provide variety of products for all your needs." name="description">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-  <title>@yield('title','sanober')</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{mix('css/layout.css')}}">
-  @yield('head-content')
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{mix('css/style.css')}}" rel="stylesheet">
+    @yield('head-content')
 </head>
 
 <body>
-  <!-- Navbar of page -->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <a class="navbar-brand d-flex justify-content-between align-items-center order-lg-0" href="#">
-        <span class="text-uppercase ms-2">MyShop.com</span>
-      </a>
-      <div class="order-lg-1">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+
+  <!-- Topbar Start -->
+  <div class="container-fluid">
+      <div class="row bg-secondary py-2 px-xl-5">
+          <div class="col-lg-6 d-none d-lg-block">
+              <div class="d-inline-flex align-items-center">
+                  <a class="text-dark" href="">FAQs</a>
+                  <span class="text-muted px-2">|</span>
+                  <a class="text-dark" href="">Help</a>
+                  <span class="text-muted px-2">|</span>
+                  <a class="text-dark" href="">Support</a>
+              </div>
+          </div>
+          <div class="col-lg-6 text-center text-lg-right">
+              <div class="d-inline-flex align-items-center">
+                  <a class="text-dark px-2" href="">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a class="text-dark px-2" href="">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a class="text-dark px-2" href="">
+                      <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  <a class="text-dark px-2" href="">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a class="text-dark pl-2" href="">
+                      <i class="fab fa-youtube"></i>
+                  </a>
+              </div>
+          </div>
       </div>
-      <div class="collapse navbar-collapse order-lg-1" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-          <li class="nav-item px-2 py-2">
-            <a class="nav-link" aria-current="page" href="{{route('homepage')}}">Home</a>
-          </li>
-          <li class="nav-item px-2 py-2">
-            <a class="nav-link" aria-current="page" href="#">Collections</a>
-          </li>
-          <li class="nav-item px-2 py-2">
-            <div class="dropdown d-inline-block justify-content-center align-items-center">
-              <a class="btn btn-muted dropdown-toggle text-muted" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Shop Now
+      <div class="row align-items-center py-3 px-xl-5">
+          <div class="col-lg-3 d-none d-lg-block">
+              <a href="" class="text-decoration-none">
+                  <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">My</span>Shop</h1>
               </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="{{route('kid')}}">Kids</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{{route('lady')}}">Women</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{{route('men')}}">Men</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item px-2 py-2">
-            <a class="nav-link" aria-current="page">Contact-Us</a>
-          </li>
-        </ul>
-        <div class="d-block me-auto mb-2 mb-lg-0 text-center">
-          @if(Session::get('user'))
-            <div class="btn-group">
-              <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{Session::get('user.first_name')}}
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{route('user')}}">Profile</a></li>
-                <li><a class="dropdown-item" href="#">Change Password</a></li>
-                <li><a class="dropdown-item" href="#">Orders</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="{{route('logout')}}">log-out</a></li>
-              </ul>
-            </div>
-          @else
-          <button type="button" class="btn">
-            <a href="{{route('login')}}" class="font">
-              <i class="fa fa-user"></i>
-            </a>
-          </button>
-        </div>
-        <div class="d-block me-auto mb-2 mb-lg-0 text-center">
-          <a href="{{route('homepage')}}" class="font">
-            <i class="fa fa-shopping-cart"></i>
-          </a>
-          <span id="lblCartCount"></span>
-        </div>
-        <form class="d-flex ms-2" role="search">
-          <input class="form-control form-control-sm me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-sm btn-outline-muted" type="submit">
-            <i class="fa fa-search font"></i>
-          </button>
-        </form>
+          </div>
+          <div class="col-lg-6 col-6 text-left">
+              <form action="">
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search for products">
+                      <div class="input-group-append">
+                          <span class="input-group-text bg-transparent text-primary">
+                              <i class="fa fa-search"></i>
+                          </span>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="col-lg-3 col-6 text-right">
+              <a href="" class="btn border">
+                  <i class="fas fa-heart text-primary"></i>
+                  <span class="badge"></span>
+              </a>
+              <a href="{{route('cart')}}" class="btn border">
+                  <i class="fas fa-shopping-cart text-primary"></i>
+                  <span class="badge"></span>
+              </a>
+          </div>
       </div>
-      @endif
+  </div>
+
+  <!-- Topbar End -->
+  <div class="container-fluid">
+    <div class="row border-top px-xl-5">
+      @yield('topbar-nav')
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">My</span>Shop</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="{{route('homepage')}}" class="nav-item nav-link">Home</a>
+                        <div class="nav-item dropdown">
+                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shop</a>
+                          <div class="dropdown-menu rounded-0 m-0">
+                              <a href="{{route('kid')}}" class="dropdown-item">Kids</a>
+                              <a href="{{route('lady')}}" class="dropdown-item">Women</a>
+                              <a href="{{route('men')}}" class="dropdown-item">Men</a>
+                          </div>
+                        </div>
+                        <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a href="{{route('cart')}}" class="dropdown-item">Shopping Cart</a>
+                                <a href="checkout.html" class="dropdown-item">Checkout</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
+                        <a href="{{route('signup')}}" class="nav-item nav-link">Register</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </div>
-  </nav>
+  </div>
+
+  {{-- @include('layouts.category') --}}
 
   @yield('body-content')
 
- 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-  crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
   <script>
     $.ajaxSetup({
       headers: {
@@ -113,6 +158,8 @@
       }
     });
   </script>
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
   @yield('script')
 
 </body>

@@ -11,6 +11,7 @@ class ProductSize extends Model
 
   public function getProductSize(){
     $productsize = ProductSize::where('size_id',$size)->get('product_id');
+    
     return $productsize;
   }
 }

@@ -37,9 +37,7 @@ $(document).ready(function () {
         $('#productModal').modal('hide');
       },
       error: function (error) {
-        // alert((e.responseJSON.errors));
         var formErr = error.responseJSON.errors;
-        console.log(formErr);
         $('.formError').html('');
         for (var err in formErr) {
           $('.' + err).html(formErr[err][0]);
