@@ -13,6 +13,7 @@ class ColorSeeder extends Seeder
      *
      * @return void
      */
+    
     public function run(Faker $f)
     {
         for($i=0;$i<10;$i++){
@@ -21,4 +22,5 @@ class ColorSeeder extends Seeder
             $colour->save();
         }
     }
+
 }

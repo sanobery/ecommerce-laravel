@@ -7,15 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  public function getAllProduct()
-  {
-    return Product::all();
-  }
+    public function getAllProduct()
+    {
+        return Product::all();
+    }
 
-  public function getAllProductById($id)
-  {
-    return Product::where('id',$id);
-  }
+    
+    public function getAllProductById($id)
+    {
+        return Product::where('id',$id);
+    }
+    
 }

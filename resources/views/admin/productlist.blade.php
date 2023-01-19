@@ -1,24 +1,22 @@
-@extends('admin.admin')
+@extends('adminlte::page')
 
-@section('head-content')
+@section('css')
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/b-1.5.2/b-flash-1.5.2/b-html5-1.5.2/fh-3.1.4/r-2.2.2/sc-1.5.0/sl-1.2.6/datatables.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"> 
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-  
-  <link rel="stylesheet" href="{{mix('css/adminsidebar.css')}}">
+ {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/b-1.5.2/b-flash-1.5.2/b-html5-1.5.2/fh-3.1.4/r-2.2.2/sc-1.5.0/sl-1.2.6/datatables.min.css"> --}}
+  {{--<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"> 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">--}}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/b-1.5.2/b-flash-1.5.2/b-html5-1.5.2/fh-3.1.4/r-2.2.2/sc-1.5.0/sl-1.2.6/datatables.min.css"/>
+  {{-- <link rel="stylesheet" href="{{mix('css/adminsidebar.css')}}"> --}}
 @endsection
 
 
-@section('body-content')
-
-  @include('admin.sidebar')
+@section('content')
 
   <div class="container mainbody">
     <div class="col-sm-12 mt_10 mb_10 BorderTopDivider">
       <h4 class="text-success text-bold mt-2">Product Available</h4>
       <table class="table table-hover customCssTable width_full" id="productlist">
-        <button type="button" class="btn btn-primary" id="createProduct">Create</button>
+        <button type="button" class="btn btn-primary mb-3" id="createProduct" data-bs-toggle="modal" data-bs-target="#exampleModal">Create</button>
         <!-- Modal -->
         <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
@@ -28,15 +26,6 @@
                 {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
               </div>
               <form method="post" class="product" name="form1" id="form1" enctype="multipart/form-data;charset=utf-8"> 
-                @if($errors->has('categoryId'))
-                  <div class="alert alert-danger">
-                    <ul>
-                      @foreach ($errors->get('categoryId') as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                    </ul> 
-                  </div>
-                @endif
                 <div class="modal-body">
                   <div id="message" class="text-success"></div>
                   {{-- @csrf --}}
@@ -57,7 +46,7 @@
                   </div>
                   <div class="form-group mb-2">
                     Category Id: 
-                    <select class="form-select" name="categoryId" id="categoryId">
+                    <select class="form-select form-control" name="categoryId" id="categoryId">
                       <option>Select From Here</option>
                       <option value="1">Kid</option>
                       <option value="2">Women</option>
@@ -120,14 +109,12 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Product</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                {{-- @csrf --}}
                 Confirm if You want to Delete this Product ?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Deny</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="deny">Deny</button>
                 <button type="button" class="btn btn-danger" id="deleteConfirm">Confirm</button>
               </div>
             </div>
@@ -137,9 +124,18 @@
     </div>
   </div>
 
-@endsection
-
-@section('script')
+  @section('js')
+  <script>
+    $.ajaxSetup({
+      headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+  </script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script src="{{mix('js/list.js')}}"></script>
+
 @endsection
+
+@endsection
+

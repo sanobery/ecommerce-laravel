@@ -91,8 +91,8 @@
           </div>
       </div>
   </div>
-
   <!-- Topbar End -->
+  
   <div class="container-fluid">
     <div class="row border-top px-xl-5">
       @yield('topbar-nav')
@@ -115,7 +115,7 @@
                               <a href="{{route('men')}}" class="dropdown-item">Men</a>
                           </div>
                         </div>
-                        <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <a href="{{route('productdetail')}}" class="nav-item nav-link">Shop Detail</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -123,11 +123,22 @@
                                 <a href="checkout.html" class="dropdown-item">Checkout</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
-                        <a href="{{route('signup')}}" class="nav-item nav-link">Register</a>
+                        @if(Session::has('user'))
+                            {{-- <a href="{{route('logout')}}" class="nav-item nav-link">{{Session::get('user.first_name')}}</a> --}}
+                            <div class="nav-item dropdown">
+                                <a href="{{route('logout')}}" class="nav-link dropdown-toggle" data-toggle="dropdown">{{Session::get('user.first_name')}}</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="{{route('cart')}}" class="dropdown-item">Profile</a>
+                                    <a href="{{route('logout')}}" class="dropdown-item">Log-Out</a>
+                                </div>
+                            </div>
+                        @else
+                            <a href="{{route('login')}}" class="nav-item nav-link">Login</a>
+                            <a href="{{route('signup')}}" class="nav-item nav-link">Register</a>
+                        @endif
                     </div>
                 </div>
             </nav>

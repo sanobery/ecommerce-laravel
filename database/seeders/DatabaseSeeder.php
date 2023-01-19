@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
         // \App\Models\User::factory(10)->create();
@@ -22,7 +23,6 @@ class DatabaseSeeder extends Seeder
         // $this->call([ProductEcommerceSeeder::class]);
         // $this->call([SizeSeeder::class]);
         $this->call([ColorSeeder::class]);
-
-        
     }
+    
 }

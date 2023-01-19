@@ -13,6 +13,7 @@ class ProductEcommerceSeeder extends Seeder
      *
      * @return void
      */
+
     public function run(Faker $f)
     {
         $productecommerce = new ProductEcommerce;
@@ -22,4 +23,5 @@ class ProductEcommerceSeeder extends Seeder
         $productecommerce->category_id = 1;
         $productecommerce->save();
     }
+    
 }

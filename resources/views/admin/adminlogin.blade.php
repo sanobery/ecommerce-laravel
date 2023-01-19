@@ -1,13 +1,12 @@
 @extends('admin.admin')
 
 @section('body-content')
-  <section class="form my-4 mx-5">
-  <div class="container mt-5">
+  <section class="form my-4 mx-5 bg-secondary">
+  <div class="container mt-5 ">
   <div class="row">
-    <div class="col-lg-5">
-      <img src="/assets/admin1.jpeg" class="img-fluid" alt="" height="100%">
-    </div>
-    <div class="col-lg-7 px-5">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-10 px-5">
+      <h1 class="mt-2 fw-bold">ADMIN</h1>
       <h1 class="mt-2 fw-light">LOG-IN</h1>
       <h6 class="py-1">Sign into Your Account</h6>
       @if(Session::has('message'))
@@ -56,3 +55,4 @@
   </div>
   </section>
 @endsection
+

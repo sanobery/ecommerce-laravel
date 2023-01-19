@@ -7,17 +7,16 @@ use Session;
 
 class ItemController extends Controller
 {
-  public function cartItem()
-  {
-    return view('item.cart');
-  }
+    public function cartItem()
+    {
+        return view('item.cart');
+    }
 
-  public function buyNow()
-  {
-    // if(Session::has('user'))
-      return view('user.payment');
+    
+    public function buyNow()
+    {
+        return view('user.payment');
 
-    // return redirect('/signup');
-  }
+    }
 
 }

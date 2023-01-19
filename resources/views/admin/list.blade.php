@@ -10,8 +10,6 @@
 
 @section('body-content')
 
-  @include('admin.sidebar')
-
   <div class="container mainbody">
     <div class="col-sm-12 mt_10 mb_10 BorderTopDivider">
       <h4 class="text-success text-bold">Referred Users

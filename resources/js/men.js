@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var colorId = [];
     var sizeId = [];
     $('.flexCheck').on('click', function () {
@@ -20,4 +21,5 @@ $(document).ready(function () {
         getProducts([3], sizeId, colorId);
     });
     getProducts([3]);
+
 });

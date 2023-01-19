@@ -12,6 +12,7 @@ class SizeSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {   
         $sizes = array('XS','S','M','L','XL','XXL');
@@ -21,4 +22,5 @@ class SizeSeeder extends Seeder
             $size->save();
         }
     }
+    
 }

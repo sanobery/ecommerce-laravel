@@ -16,13 +16,12 @@ class LoginRedirect
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-  public function handle(Request $request, Closure $next)
-  {
-    
-    if (!$request->session()->has('user')) {
-      return $next($request);
+    public function handle(Request $request, Closure $next)
+    {
+        if (!$request->session()->has('user')) {
+        return $next($request);
+        }
+        
+        return redirect()->route('homepage');
     }
-    
-    return redirect()->route('homepage');
-  }
 }

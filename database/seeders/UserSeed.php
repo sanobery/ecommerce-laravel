@@ -13,10 +13,10 @@ class UserSeed extends Seeder
      *
      * @return void
      */
+
     public function run(Faker $f)
     {
         $user = new User;
-
-
     }
+    
 }
