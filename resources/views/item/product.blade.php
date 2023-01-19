@@ -1,6 +1,7 @@
 <div class="container-fluid pt-5">
     
     <div class="row px-xl-5">
+
         <!-- Shop Sidebar Start -->
         <div class="col-lg-3 col-md-12">
             
@@ -45,6 +46,7 @@
             <!-- Size End -->
         </div>
         <!-- Shop Sidebar End -->
+
 
         <!-- Shop Product Start -->
         <div class="col-lg-9 col-md-12">
@@ -99,6 +101,7 @@
             </div> 
         </div>
         <!-- Shop Product End -->
+        
     </div>
 
 </div>

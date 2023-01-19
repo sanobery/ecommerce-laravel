@@ -477,6 +477,7 @@
     </div>
     <!-- Products End -->
 
+    
     @include('layouts.footer')
 
 @endsection

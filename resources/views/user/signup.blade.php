@@ -1,11 +1,9 @@
 @extends('layouts.header')
 
 @section('title')
-  Sign-Up
+    Sign-Up
 @endsection
 
-@section('head-content')
-@endsection
 
 @section('body-content')
 

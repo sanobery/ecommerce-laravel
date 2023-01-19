@@ -93,6 +93,7 @@
   </div>
   <!-- Topbar End -->
   
+
   <div class="container-fluid">
     <div class="row border-top px-xl-5">
       @yield('topbar-nav')
@@ -146,12 +147,13 @@
     </div>
   </div>
 
-  {{-- @include('layouts.category') --}}
 
   @yield('body-content')
 
+
   <!-- Back to Top -->
   <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
 
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -159,6 +161,7 @@
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
+  
   <!-- Contact Javascript File -->
   <script src="mail/jqBootstrapValidation.min.js"></script>
   <script src="mail/contact.js"></script>
