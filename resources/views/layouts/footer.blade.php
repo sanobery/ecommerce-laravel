@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="row border-top border-dark mx-xl-5 py-4">
-        <p class="mx-auto">© 2023 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
+        <p class="mx-auto">©<?php echo date("Y"); ?> All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
         Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
         </p>
     </div>

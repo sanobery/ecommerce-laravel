@@ -1,6 +1,28 @@
 $(document).ready(function () {
 
-    $('#productlist').dataTable();
+    $('#productlist').dataTable({
+        responsive: true,
+        "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
+        iDisplayLength: 5,
+        dom: 'Bfrtip',
+        // order: [[4, "asc"]],
+        language: {
+            search: "Find Product",
+            info: "_TOTAL_ -   Total Products",
+        },
+        buttons: ['pageLength',
+            {
+                text: 'All Products',
+                extend: 'pdf',
+                // split: ['copy', 'excel', 'csv'],
+                exportOptions: {
+                    rows: function (idx, data, node) {
+                        return data[4] == 1 ? true : false;
+                    }
+                }
+            }
+        ],
+    });
 
     $('#createProduct').on('click', function () {
         $('#productId').val(null);
