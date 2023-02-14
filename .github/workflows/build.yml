@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-20.04
+    runs-on: 'node16'
     steps:
       - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
