@@ -29,7 +29,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - adminlte
 
 
 jobs:
@@ -42,7 +42,7 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - uses: sonarsource/sonarqube-scan-action@master
         env:
-          SONAR_TOKEN: sqp_a699a929bafab60ef3025222197cb3497ffe050b
+          SONAR_TOKEN: sqp_eb5f83dbfedbaba7676371779650477143513498
           SONAR_HOST_URL: http://localhost:9000
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
