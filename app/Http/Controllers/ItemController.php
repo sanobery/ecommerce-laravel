@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Session;
+use App\Mail\TestMail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ItemController extends Controller
 {
@@ -16,7 +18,13 @@ class ItemController extends Controller
     public function buyNow()
     {
         return view('user.payment');
-
     }
+
+    public function index()
+    {
+        Mail::to('sanoberyousuf786@gmail.com')->send(new TestMail());
+        // return view('email.sendMail');
+    }
+
 
 }

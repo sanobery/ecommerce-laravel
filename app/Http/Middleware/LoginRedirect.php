@@ -19,7 +19,7 @@ class LoginRedirect
     public function handle(Request $request, Closure $next)
     {
         if (!$request->session()->has('user')) {
-        return $next($request);
+            return $next($request);
         }
         
         return redirect()->route('homepage');

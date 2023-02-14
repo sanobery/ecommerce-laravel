@@ -37,7 +37,7 @@
                 </tr>
                 </table>
                 @endif
-                <a href="{{route('updatedetail')}}" class="btn btn-warning">Update Information</a>
+                <a href="{{route('updatedetail')}}" class="btn btn-danger">Update Information</a>
             </div>
             </div>
         </div>
