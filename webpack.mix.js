@@ -29,10 +29,6 @@ mix.scripts(['resources/js/women.js'], 'public/js/women.js').version();
 mix.scripts(['resources/js/men.js'], 'public/js/men.js').version();
 mix.scripts(['resources/js/kid.js'], 'public/js/kid.js').version();
 mix.scripts(['resources/js/list.js'], 'public/js/list.js').version();
+mix.scripts(['resources/js/list.js'], 'public/js/list.js').version();
 mix.scripts(['resources/js/cart.js'], 'public/js/cart.js').version();
 
-// mix.webpackConfig({
-//     stats: {
-//         children: true,
-//     },
-// });

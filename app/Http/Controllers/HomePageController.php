@@ -15,105 +15,130 @@ use App\Http\Requests\Registration;
 
 class HomePageController extends Controller
 {
-  public function shop(Size $size, Color $color)
-  {
-    $size = $size->getAllSize();
-    $color = $color->getAllColor();
 
-    return view('item.shop')->with(['sizes'=>$size,'colors'=>$color]);
-  }
+    public function shop(Size $size, Color $color)
+    {
+        $size = $size->getAllSize();
+        $color = $color->getAllColor();
 
-  public function list(UserRegister $user)
-  {
-    $user = $user->getData();
-
-    return view('admin.list',['users'=>$user]);
-  }
-
-  public function getPrices(Request $request,Price $price,Size $size)
-  {
-    $price = $price->getPrice($request->all());
-
-    return response()->json([
-      'price'=>$price,
-    ]);
-  }
-
-  public function getItems(Request $request,ProductEcommerce $product, Size $size, Color $color, Price $prices)
-  {
-    $product = $product->getAllProducts($request->all());
-    $size = Size::join('product_sizes','sizes.size_id','=','product_sizes.size_id')->join('product_ecommerces','product_sizes.product_id','=','product_ecommerces.product_id')->whereIn('category_id',[$request['category']])->get();
-
-    return response()->json([
-      'products'=>$product,
-      'size'=>$size
-    ]);
-  }
-
-  public function userProfile()
-  {
-    return view('user.userprofile');   
-  }
-
-  public function login(LogIn $request, UserRegister $user)
-  {
-    $user = $user->checkUserDetail($request->all());
-    if($user && $request->session()->put('user',$user[0])) {
-      
-      return redirect('/');
+        return view('item.shop')->with(['sizes'=>$size,'colors'=>$color]);
     }
-   
-    return redirect('/login');
-  }
 
-  public function registration(Registration $request, UserRegister $user)
-  {
-    $user = $user->saveUserDetail($request->all());
-    $request->session()->put('user',$user);
 
-    return redirect('/');
-  }
+    public function list(UserRegister $user)
+    {
+        $user = $user->getData();
 
-  public function loginIndex()
-  { 
-    return view('user.login');
-  }
+        return view('admin.list',['users'=>$user]);
+    }
 
-  public function signupIndex()
-  { 
-    return view('user.signup');
-  }
 
-  public function womenItem(Size $size, Color $color)
-  { 
-    $size = $size->getAllSize();
-    $color = $color->getAllColor();
+    public function getPrices(Request $request,Price $price,Size $size)
+    {
+        $price = $price->getPrice($request->all());
 
-    return view('item.women')->with(['sizes'=>$size,'colors'=>$color]);
-  }
+        return response()->json([
+        'price'=>$price,
+        ]);
+    }
 
-  public function menItem(Size $size, Color $color)
-  { 
-    $size = $size->getAllSize();
-    $color = $color->getAllColor();
 
-    return view('item.men',['sizes'=>$size,'colors'=>$color]);
-  }
+    public function getItems(Request $request,ProductEcommerce $product, Size $size, Color $color, Price $prices)
+    {
+        $product = $product->getAllProducts($request->all());
+        $size = Size::join('product_sizes','sizes.size_id','=','product_sizes.size_id')->join('product_ecommerces','product_sizes.product_id','=','product_ecommerces.product_id')->whereIn('category_id',[$request['category']])->get();
 
-  public function kidItem(Size $size, Color $color)
-  { 
-    $size = $size->getAllSize();
-    $color = $color->getAllColor();
+        return response()->json([
+        'products'=>$product,
+        'size'=>$size
+        ]);
+    }
+
+
+    public function userProfile()
+    {
+        return view('user.userprofile');   
+    }
+
+
+    public function login(LogIn $request, UserRegister $user)
+    {
+        $user = $user->checkUserDetail($request->all());
+        if($user && $request->session()->put('user',$user[0])) {
+        
+        return redirect('/');
+        }
     
-    return view('item.kid',['sizes'=>$size,'colors'=>$color]);
-  }
+        return redirect('/login');
+    }
 
-  public function logOut()
-  {
-    Session::flush();
 
-    return redirect('/');
-  }
+    public function registration(Registration $request, UserRegister $user)
+    {
+        $user = $user->saveUserDetail($request->all());
+        $request->session()->put('user',$user);
+
+        return redirect('/');
+    }
+
+
+    public function loginIndex()
+    { 
+        return view('user.login');
+    }
+
+
+    public function signupIndex()
+    { 
+        return view('user.signup');
+    }
+
+
+    public function womenItem(Size $size, Color $color)
+    { 
+        $size = $size->getAllSize();
+        $color = $color->getAllColor();
+
+        return view('item.women')->with(['sizes'=>$size,'colors'=>$color]);
+    }
+
+
+    public function menItem(Size $size, Color $color)
+    { 
+        $size = $size->getAllSize();
+        $color = $color->getAllColor();
+
+        return view('item.men',['sizes'=>$size,'colors'=>$color]);
+    }
+
+
+    public function kidItem(Size $size, Color $color)
+    { 
+        $size = $size->getAllSize();
+        $color = $color->getAllColor();
+        
+        return view('item.kid',['sizes'=>$size,'colors'=>$color]);
+    }
+
+
+    public function logOut()
+    {
+        Session::flush();
+
+        return redirect('/');
+    }
+
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+
+    public function productDetail()
+    {
+        return view('item.productDetail');
+    }
+
 }
 
-// SELECT * FROM prices join sizes on prices.size_id = sizes.size_id where prices.product_id = 2 and sizes.size_option = 'L';

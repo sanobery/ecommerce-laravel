@@ -1,35 +1,35 @@
 .bg-lightblue {
-  background-color: rgb(210, 210, 228);
+    background-color: rgb(210, 210, 228);
 }
   
-  #div1 {
+#div1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
-  }
-  
-  .imgsize {
+}
+
+.imgsize {
     height: 200px;
     width: 200px;
-  }
+}
 
-  .font{
+.font{
     color:rgb(167, 157, 157);
-  }
+}
 
-  .cardinline {
+.cardinline {
     display: inline;
     justify-content: center;
     --bs-card-spacer-y: 1rem;
     --bs-card-spacer-x: 3rem;
-  }
+}
 
-  .sizeselect{
+.sizeselect{
     color:black;
     background-color: pink;
-  }
-  
-  #lblCartCount {
+}
+
+#lblCartCount {
     font-size: 0.8rem;
     background: rgb(223, 162, 162);
     color: rgb(175, 23, 23);
@@ -38,68 +38,68 @@
     vertical-align: top;
     margin-left: -2px;
     margin-top: -5px;
-  }
-  
-  #offcanvasExampleLabel {
+}
+
+#offcanvasExampleLabel {
     color: rgb(175, 23, 23);
-  }
-  
-  .table tr,
-  .table tr td {
+}
+
+.table tr,
+.table tr td {
     vertical-align: middle;
-  }
-  
-  .button-container {
+}
+
+.button-container {
     display: flex;
     align-items: center;
-  }
-  
-  .button-container .form-control {
+}
+
+.button-container .form-control {
     display: inline-block;
     max-width: 80px;
     text-align: center;
     margin: 0px 5px;
-  }
-  
-  #mytable .form-control {
+}
+
+#mytable .form-control {
     display: inline-block;
     width: auto;
-  }
-  
-  .cart-qty-plus,
-  .cart-qty-minus {
+}
+
+.cart-qty-plus,
+.cart-qty-minus {
     width: 30px;
     height: 30px;
     background-color: white;
     color: rgb(167, 157, 157);
     border-radius: 50%;
     border: 1px solid rgb(167, 157, 157);
-  }
-  
-  .img-prod {
+}
+
+.img-prod {
     width: 50px;
     height: 50px;
-  }
-  
-  .img-prod img {
+}
+
+.img-prod img {
     width: 100%;
     height: 100%;
-  }
-  
-  .price {
+}
+
+.price {
     background-color: white;
     color: rgb(167, 157, 157);
     border-radius: 30px;
     border: 1px solid rgb(167, 157, 157);
     width: 50px;
     height: auto;
-  }
-  
-  .offcanvas {
+}
+
+.offcanvas {
     --bs-offcanvas-width: 500px;
-  }
-  
-  .offcanvas .btn i {
+}
+
+.offcanvas .btn i {
     color: #fff;
-  }
- 
+}
+

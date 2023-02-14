@@ -7,18 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Color extends Model
 {
-  use HasFactory;
-  public function getAllColor(){
-    $size = Color::all();
+    use HasFactory;
     
-    return $size;
-  }
+    public function getAllColor(){
+        $size = Color::all();
+        
+        return $size;
+    }
 
-  public function getCount()
-  {
-    $user = new Color;
-    $user = $user->count();
+    
+    public function getCount()
+    {
+        $user = new Color;
+        $user = $user->count();
 
-    return $user;
-  }
+        return $user;
+    }
 }

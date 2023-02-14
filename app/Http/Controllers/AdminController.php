@@ -14,70 +14,75 @@ use App\Http\Requests\ProductList;
 
 class AdminController extends Controller
 {
-  public function index()
-  {
-    return view('admin.adminlogin');
-  }
 
-  public function checkIsAdmin(Login $request,Admin $admin)
-  {
-    $admin = $admin->checkAdminDetail($request->all());
-    if($admin && $request->session()->put('admin',$admin[0])){
-
-      return redirect('/dashboard');
+    public function index()
+    {
+        return view('admin.adminlogin');
     }
 
-    return redirect('/adminlogin');
-  }
 
-  public function dashboard(UserRegister $user,Size $size, Color $colour)
-  {
-    $user = $user->getCount();
-    $size = $size->getCount();
-    $colour = $colour->getCount();
+    public function checkIsAdmin(Login $request,Admin $admin)
+    {
+        $admin = $admin->checkAdminDetail($request->all());
+        if($admin && $request->session()->put('admin',$admin[0])){
 
-    return view('admin.dashboard',[
-      'userCount' => $user,
-      'sizeCount' => $size,
-      'colourCount' => $colour
-    ]);
-  }
+        return redirect('/dashboard');
+        }
 
-  public function logOut()
-  {
-    Session::flush();
+        return redirect('/adminlogin');
+    }
 
-    return redirect('/adminlogin');
-  }
 
-  public function productList(ProductEcommerce $product)
-  {
-    $product = $product->getProduct();
+    public function dashboard(UserRegister $user,Size $size, Color $colour)
+    {
+        $user = $user->getCount();
+        $size = $size->getCount();
+        $colour = $colour->getCount();
 
-    return view('admin.productlist',[
-      'products' => $product,
-    ]);
-  }
+        return view('admin.dashboard',[
+        'userCount' => $user,
+        'sizeCount' => $size,
+        'colourCount' => $colour
+        ]);
+    }
 
-  public function update($id)
-  {
-    return $id;
-  }
 
-  public function createEditProduct(ProductList $request,ProductEcommerce $product)
-  {
-    // dd($request->all());
-    $product->insertUpdateData($request);
-   
-    return response()->json(['message'=>"Success"]);
-  }
+    public function logOut()
+    {
+        Session::flush();
 
-  public function deleteProduct(Request $request,ProductEcommerce $product)
-  {
-    // dd($request->all());
-    $product->deleteData($request->all());
-    return response()->json(['message'=>"Success"]);
-  }
+        return redirect('/adminlogin');
+    }
 
+
+    public function productList(ProductEcommerce $product)
+    {
+        $product = $product->getProduct();
+
+        return view('admin.productlist',[
+        'products' => $product,
+        ]);
+    }
+
+
+    public function update($id)
+    {
+        return $id;
+    }
+
+
+    public function createEditProduct(ProductList $request,ProductEcommerce $product)
+    {
+        $product->insertUpdateData($request);
+    
+        return response()->json(['message'=>"Success"]);
+    }
+
+
+    public function deleteProduct(Request $request,ProductEcommerce $product)
+    {
+        $product->deleteData($request->all());
+        return response()->json(['message'=>"Success"]);
+    }
 
 }

@@ -12,9 +12,11 @@ class ProductSizeSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
         $productsize = new ProductSize();
         
     }
+    
 }

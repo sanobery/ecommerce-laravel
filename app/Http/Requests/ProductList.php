@@ -12,25 +12,26 @@ class ProductList extends FormRequest
      * @return bool
      */
     
-  public function authorize()
-  {
-      return true;
-  }
+    public function authorize()
+    {
+        return true;
+    }
 
-  /**
-   * Get the validation rules that apply to the request.
-   *
-   * @return array
-   */
-  public function rules()
-  {
-    return [
-      'productSrc'     => 'required|mimes:jpg,jpeg,png',
-      'productName'     => 'required|string|min:2|max:20',
-      'productDesc'     => 'required|string|min:5|max:30',
-      'categoryId'     => 'required',
-    ];
-  }
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+
+    public function rules()
+    {
+        return [
+        'productSrc'     => 'required|mimes:jpg,jpeg,png',
+        'productName'     => 'required|string|min:2|max:20',
+        'productDesc'     => 'required|string|min:5|max:30',
+        'categoryId'     => 'required',
+        ];
+    }
   
 }
 

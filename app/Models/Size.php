@@ -7,26 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Size extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  public function getAllSize(){
-    $size = Size::all();
+    public function getAllSize(){
+        $size = Size::all();
 
-    return $size;
-  }
+        return $size;
+    }
 
-  public function getFilterSize($size){
-    $size = Size::where('size_option',$size)->get('size_id');
 
-    return $size;
-  }
+    public function getFilterSize($size){
+        $size = Size::where('size_option',$size)->get('size_id');
 
-  public function getCount()
-  {
-    $user = new Size;
-    $user = $user->count();
+        return $size;
+    }
 
-    return $user;
-  }
+    
+    public function getCount()
+    {
+        $user = new Size;
+        $user = $user->count();
+
+        return $user;
+    }
 
 }

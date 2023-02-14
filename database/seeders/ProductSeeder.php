@@ -14,11 +14,13 @@ class ProductSeeder extends Seeder
      *
      * @return void
      */
-  public function run(Faker $f)
-  { 
-    $product = new Product;
-    $product->url = "/assets/kids1.jpeg";
-    $product->name = $f->safeColorName();
-    $product->save();
-  } 
+
+    public function run(Faker $f)
+    { 
+        $product = new Product;
+        $product->url = "/assets/kids1.jpeg";
+        $product->name = $f->safeColorName();
+        $product->save();
+    } 
+    
 }

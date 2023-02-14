@@ -9,19 +9,19 @@ use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
-  public function updateData()
-  {
-    return view('user.update');
-  }
-
-  public function updateUserInfo(Request $request,UserRegister $user)
-  {
-    $user = $user->updateData($request->all());
-
-    if($user) {
-      Session::flush();
-      Session::flash('message', 'User Information Updated! Please Login Again.'); 
-      return redirect('/login');
+    public function updateData()
+    {
+        return view('user.update');
     }
-  }
+
+    public function updateUserInfo(Request $request,UserRegister $user)
+    {
+        $user = $user->updateData($request->all());
+
+        if($user) {
+        Session::flush();
+        Session::flash('message', 'User Information Updated! Please Login Again.'); 
+        return redirect('/login');
+        }
+    }
 }
